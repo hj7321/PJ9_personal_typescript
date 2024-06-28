@@ -96,7 +96,10 @@ export interface Country {
   timezones: string[];
   continents: string[];
   flags: Flags;
-  coatOfArms: object;
+  coatOfArms: {
+    png?: string;
+    svg?: string;
+  };
   startOfWeek: string;
   capitalInfo: CapitalInfo;
   postalCode: PostalCode;
