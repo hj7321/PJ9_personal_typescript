@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCountries } from "../api/countries";
-import { CountryWithFavorite } from "../types/country.type";
+import { Country, CountryWithFavorite } from "../types/country.type";
 import CountryCard from "./CountryCard";
 import { StDiv, StSection, StSelect } from "../style/CountryListStyle";
 import Loading from "./Loading";
@@ -14,8 +14,11 @@ const CountryList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getCountries();
-        const newData = data.map((e) => ({ ...e, isFavorite: false }));
+        const data: Country[] = await getCountries();
+        const newData: CountryWithFavorite[] = data.map((e) => ({
+          ...e,
+          isFavorite: false,
+        }));
         setCountries(newData);
       } catch (error) {
         console.error("에러: ", error);
@@ -25,7 +28,7 @@ const CountryList: React.FC = () => {
     fetchData();
   }, []);
 
-  const onToggleFavorite = (countryName: string) => {
+  const onToggleFavorite = (countryName: string): void => {
     if (countries) {
       setCountries(
         countries.map((country) =>
@@ -39,8 +42,9 @@ const CountryList: React.FC = () => {
 
   if (!countries) return <Loading />;
 
-  const sortCountryCard = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(sortOption);
+  const sortCountryCard = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
     const value = event.target.value;
     setSortOption(value);
 
