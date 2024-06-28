@@ -17,9 +17,12 @@ const CountryCard: React.FC<CountryCardProps> = ({
   return (
     <StUl>
       {countries.map((country) => (
-        <StLi key={country.name} onClick={() => onHandleToggle(country.name)}>
-          <StImg src={country.flags} height="100px" />
-          <StCon>{country.name}</StCon>
+        <StLi
+          key={country.name.common}
+          onClick={() => onHandleToggle(country.name.common)}
+        >
+          <StImg src={country.flags.png} height="100px" />
+          <StCon>{country.name.common}</StCon>
           <StCap>수도: {country.capital}</StCap>
         </StLi>
       ))}
