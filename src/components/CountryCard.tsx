@@ -23,7 +23,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
         >
           <StImg src={country.flags.png} height="100px" />
           <StCon>{country.name.common}</StCon>
-          <StCap>수도: {country.capital}</StCap>
+          <StCap>수도: {country.capital ?? "❌"}</StCap>
         </StLi>
       ))}
     </StUl>
