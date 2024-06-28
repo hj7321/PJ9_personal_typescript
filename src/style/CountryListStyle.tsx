@@ -12,3 +12,8 @@ export const StSection = styled.section<StSectionProps>`
 export const StDiv = styled.div`
   margin-top: 20px;
 `;
+
+export const StSelect = styled.select`
+  margin-left: 40px;
+  height: 30px;
+`;
