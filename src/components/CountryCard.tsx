@@ -1,8 +1,8 @@
 import { StCap, StCon, StImg, StLi, StUl } from "../style/CountryCardStyle";
-import { Country } from "../types/country.type";
+import { CountryWithFavorite } from "../types/country.type";
 
 interface CountryCardProps {
-  countries: Country[];
+  countries: CountryWithFavorite[];
   onToggleFavorite: (countryName: string) => void;
 }
 
@@ -16,7 +16,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
 
   return (
     <StUl>
-      {countries.map((country) => (
+      {countries.map((country: CountryWithFavorite) => (
         <StLi
           key={country.name.common}
           onClick={() => onHandleToggle(country.name.common)}
