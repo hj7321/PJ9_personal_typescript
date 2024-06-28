@@ -67,7 +67,6 @@ const CountryList: React.FC = () => {
   return (
     <>
       <StSection $top>
-        <h1>💖Favorite Countries💖</h1>
         <StSelect value={sortOption} onChange={sortCountryCard}>
           <option value="" disabled style={{ display: "none" }}>
             정렬 선택
@@ -75,6 +74,7 @@ const CountryList: React.FC = () => {
           <option value="country">나라 이름순</option>
           <option value="capital">수도 이름순</option>
         </StSelect>
+        <h1>💖Favorite Countries💖</h1>
         <StDiv>
           {favoriteCountries.length ? (
             <CountryCard
