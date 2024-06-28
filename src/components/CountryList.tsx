@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { getCountries } from "../api/countries";
-import { Country } from "../types/country.type";
+import { CountryWithFavorite } from "../types/country.type";
 import CountryCard from "./CountryCard";
 import { StDiv, StSection } from "../style/CountryListStyle";
 
 const CountryList: React.FC = () => {
-  const [countries, setCountries] = useState<Country[] | null>(null);
+  const [countries, setCountries] = useState<CountryWithFavorite[] | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getCountries();
-        setCountries(data);
         console.log(data);
+        const newData = data.map((e) => ({ ...e, isFavorite: false }));
+        setCountries(newData);
       } catch (error) {
         console.error("에러: ", error);
       }
@@ -25,7 +28,7 @@ const CountryList: React.FC = () => {
     if (countries) {
       setCountries(
         countries.map((country) =>
-          country.name === countryName
+          country.name.common === countryName
             ? { ...country, isFavorite: !country.isFavorite }
             : country
         )
