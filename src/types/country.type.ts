@@ -1,3 +1,10 @@
+export interface Country {
+  flags: string;
+  name: string;
+  capital: string;
+  isFavorite: boolean;
+}
+
 // type NativeName = {
 //   [key: string]: {
 //     official: string;
@@ -94,10 +101,3 @@
 //   capitalInfo: CapitalInfo;
 //   postalCode: PostalCode;
 // }
-
-export interface Country {
-  flags: string;
-  name: string;
-  capital: string;
-  isFavorite: boolean;
-}
