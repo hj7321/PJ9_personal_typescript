@@ -3,6 +3,7 @@ import { getCountries } from "../api/countries";
 import { CountryWithFavorite } from "../types/country.type";
 import CountryCard from "./CountryCard";
 import { StDiv, StSection } from "../style/CountryListStyle";
+import Loading from "./Loading";
 
 const CountryList: React.FC = () => {
   const [countries, setCountries] = useState<CountryWithFavorite[] | null>(
@@ -36,7 +37,7 @@ const CountryList: React.FC = () => {
     }
   };
 
-  if (!countries) return <div>Loading...</div>;
+  if (!countries) return <Loading />;
 
   const favoriteCountries = countries.filter((country) => country.isFavorite);
   const nonFavoriteCountries = countries.filter(
